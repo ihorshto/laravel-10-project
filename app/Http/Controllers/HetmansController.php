@@ -13,6 +13,13 @@ class HetmansController extends Controller
         return view('hetmans.index', compact('hetmans'));
     }
 
+    public function show($id)
+    {
+        // dd($id);
+        $hetman = Hetmans::findOrFail($id);
+        return view('hetmans.getone', compact('hetman'));
+    }
+
     public function create()
     {
         // $hetmans = DB::insert();

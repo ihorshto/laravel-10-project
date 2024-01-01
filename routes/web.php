@@ -19,6 +19,9 @@ Route::resource('hetmans', HetmansController::class);
 
 Route::get('/hetmans', [HetmansController::class, 'index']);
 
+Route::get('hetmans/{id}', [HetmansController::class, 'show'])->name('hetmans.show');
+
+
 Route::get('/hetmans/create', [HetmansController::class, 'create']);
 
 
