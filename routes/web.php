@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('hetmans', HetmansController::class);
 
 
-Route::get('/hetmans', [HetmansController::class, 'index']);
+Route::get('/hetmans', [HetmansController::class, 'index'])->name('hetmans.index');
 
 Route::get('hetmans/{id}', [HetmansController::class, 'show'])->name('hetmans.show');
 
