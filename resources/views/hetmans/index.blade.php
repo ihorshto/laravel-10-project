@@ -1,6 +1,6 @@
 
 <div>
-    <a href="{{ route('hetmans.create') }}">Add New Hetman</a>
+    <a href="{{ route('hetmans.create') }}" class=" text-blue-500 hover:text-blue-950">Add New Hetman</a>
     <h1>List of Ukrainian hetmans:</h1>
     @foreach($hetmans as $hetman)
     <h3>{{$hetman->first_name}} {{$hetman->last_name}}</h3>

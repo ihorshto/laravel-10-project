@@ -17,14 +17,15 @@ class HetmansController extends Controller
     public function show($id)
     {
         $hetman = Hetmans::findOrFail($id);
-        return view('hetmans.getone', compact('hetman'));
+        return view('hetmans.get_hetman', compact('hetman'));
+        // return view('hetmans.get_hetman', ['hetman' => $hetman]);
     }
 
     public function create()
     {
-        return view('hetmans.create');
+        // dd("create hetman");
+        return view('hetmans.createone');
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -66,17 +67,16 @@ class HetmansController extends Controller
             'description' => 'required|string',
         ]);
 
+        if ($request->get('point') == 'on') {
+            $request->merge(['point' => '1']);
+        } else {
+            $request->merge(['point' => '0']);
+        }
+
         $hetman->update($request->all());
 
         return redirect()->route('hetmans.index');
     }
-
-    // public function update(Request $request, Hetmans $hetman)
-    // {
-    //     dd($request->get('id'));
-    //     $hetman->update($request->all());
-    //     return redirect()->route('hetmans.index');
-    // }
 
     public function destroy(Hetmans $hetman)
     {

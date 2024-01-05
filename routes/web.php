@@ -14,22 +14,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::resource('hetmans', HetmansController::class);
 
+// Route::get('/hetmans', [HetmansController::class, 'index'])->name('hetmans.index');
+// Route::get('hetmans/{id}', [HetmansController::class, 'show'])->name('hetmans.show')->where('id', '[0-9]+');
+// Route::get('/hetmans/create', [HetmansController::class, 'create'])->name('hetmans.create');
 
-Route::get('/hetmans', [HetmansController::class, 'index'])->name('hetmans.index');
+// Route::post('hetmans', [HetmansController::class, 'store'])->name('hetmans.store');
 
-Route::get('hetmans/{id}', [HetmansController::class, 'show'])->name('hetmans.show');
+// Route::delete('hetmans/{id}', [HetmansController::class, 'destroy'])->name('hetmans.destroy');
+
+// Route::get('hetmans/{hetman}/edit', [HetmansController::class, 'edit'])->name('hetmans.edit');
+// Route::put('hetmans/{hetman}', [HetmansController::class, 'update'])->name('hetmans.update');
+
+Route::controller(HetmansController::class)->group(function () {
+    Route::get('/hetmans', 'index')->name('hetmans.index');
+    Route::get('hetmans/{id}', 'show')->name('hetmans.show');
+    Route::get('/hetmans/create', 'create')->name('hetmans.create');
+
+    Route::post('hetmans', 'store')->name('hetmans.store');
+
+    Route::delete('hetmans/{id}', 'destroy')->name('hetmans.destroy');
+
+    Route::get('hetmans/{hetman}/edit', 'edit')->name('hetmans.edit');
+    Route::put('hetmans/{hetman}/update', 'update')->name('hetmans.update');
+
+});
 
 
-Route::get('/hetmans/create', [HetmansController::class, 'create'])->name('hetmans.create');;
-
-Route::post('hetmans', [HetmansController::class, 'store'])->name('hetmans.store');
-
-Route::delete('hetmans/{id}', [HetmansController::class, 'destroy'])->name('hetmans.destroy');
-
-Route::get('hetmans/{hetman}/edit', [HetmansController::class, 'edit'])->name('hetmans.edit');
-Route::put('hetmans/{hetman}', [HetmansController::class, 'update'])->name('hetmans.update');
 //
 // Route::post('hetmans/{id}', [HetmansController::class, 'update'])->name('hetmans.update');
 
@@ -89,4 +106,4 @@ Route::put('hetmans/{hetman}', [HetmansController::class, 'update'])->name('hetm
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
