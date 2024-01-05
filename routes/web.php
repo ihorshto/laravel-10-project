@@ -22,9 +22,16 @@ Route::get('/hetmans', [HetmansController::class, 'index'])->name('hetmans.index
 Route::get('hetmans/{id}', [HetmansController::class, 'show'])->name('hetmans.show');
 
 
-Route::get('/hetmans/create', [HetmansController::class, 'create']);
+Route::get('/hetmans/create', [HetmansController::class, 'create'])->name('hetmans.create');;
 
+Route::post('hetmans', [HetmansController::class, 'store'])->name('hetmans.store');
 
+Route::delete('hetmans/{id}', [HetmansController::class, 'destroy'])->name('hetmans.destroy');
+
+Route::get('hetmans/{hetman}/edit', [HetmansController::class, 'edit'])->name('hetmans.edit');
+Route::put('hetmans/{hetman}', [HetmansController::class, 'update'])->name('hetmans.update');
+//
+// Route::post('hetmans/{id}', [HetmansController::class, 'update'])->name('hetmans.update');
 
 
 // old routes
