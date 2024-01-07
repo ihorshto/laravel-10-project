@@ -28,11 +28,12 @@ class HetmansController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
+    $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'years_of_reign' => 'required|string|max:255',
             'description' => 'required|string',
+            'point' => 'nullable'
         ]);
 
         if ($request->get('point') == 'on') {
@@ -54,19 +55,12 @@ class HetmansController extends Controller
         return redirect()->route('hetmans.index')->with('success', 'Hetman created successfully!');
     }
 
-    public function edit(Hetmans $hetman)
+    public function edit()
     {
         return view('hetmans.edit', compact('hetman'));
     }
     public function update(Request $request, Hetmans $hetman)
     {
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'years_of_reign' => 'required|string|max:255',
-            'description' => 'required|string',
-        ]);
-
         if ($request->get('point') == 'on') {
             $request->merge(['point' => '1']);
         } else {
@@ -83,5 +77,4 @@ class HetmansController extends Controller
         $hetman->delete();
         return redirect()->route('hetmans.index');
     }
-
 }

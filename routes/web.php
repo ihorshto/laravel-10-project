@@ -41,8 +41,8 @@ Route::controller(HetmansController::class)->group(function () {
 
     Route::delete('hetmans/{id}', 'destroy')->name('hetmans.destroy');
 
-    Route::get('hetmans/{hetman}/edit', 'edit')->name('hetmans.edit');
-    Route::put('hetmans/{hetman}/update', 'update')->name('hetmans.update');
+    Route::get('hetmans/{id}/edit', 'edit')->name('hetmans.edit');
+    Route::put('hetmans/{id}/update', 'update')->name('hetmans.update');
 
 });
 

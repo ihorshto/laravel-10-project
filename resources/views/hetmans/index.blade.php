@@ -9,7 +9,7 @@
         See more ->
     </a>
     <p>
-    <a href="{{ route('hetmans.edit', $hetman->id) }}">
+    <a href="{{ route('hetmans.edit', $hetman->id, $hetman->first_name) }}">
         Edit
     </a>
     <form method="post" action="{{ route('hetmans.destroy', $hetman->id) }}">
